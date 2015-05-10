@@ -1,11 +1,9 @@
 (function() {
     'use strict';
 
-    angular
-        .module('app.hosts')
-        .controller('ContainerController', ContainerController);
+    angular.module('app.hosts').
 
-    function ContainerController($scope, $modal, containersService) {
+    controller('ContainerController', function($rootScope, $scope, $modal, $window, containersService) {
         function init() {
         }
 
@@ -77,7 +75,18 @@
 
         };
 
+        $scope.launchTool = function(toolName, port) {
+            $rootScope.currentTool[toolName] = {
+                tool: toolName,
+                host: $scope.$parent.host,
+                container: $scope.container,
+                port: port
+            };
+
+            $window.location.href = "#/" + toolName;
+        };
+
         init();
-    }
+    });
 
 })();

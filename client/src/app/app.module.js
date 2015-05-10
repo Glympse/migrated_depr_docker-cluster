@@ -8,7 +8,9 @@
         'app.layout'
     ]).
 
-    run(['$route', function($route)  {
+    run(['$rootScope', '$route', function($rootScope, $route)  {
+        $rootScope.currentTool = {};
+
         $route.reload();
     }]);
 

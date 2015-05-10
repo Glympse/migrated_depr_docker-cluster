@@ -3,7 +3,7 @@
 
     angular.module('app.sync').
 
-    controller('SyncController', function($scope, syncService) {
+    controller('SyncController', function($rootScope, $scope, syncService) {
 
         function clear() {
             var template = [{
@@ -22,6 +22,15 @@
         function init() {
             $scope.base = "";
             clear();
+
+            if ( $rootScope.currentTool["sync"] ) {
+                $scope.base
+                    = "http://"
+                    + $rootScope.currentTool.sync.host.network.public_ip + ":"
+                    + $rootScope.currentTool.sync.port.PublicPort;
+
+                $scope.connect();
+            }
         }
 
         $scope.aceLoaded = function(editor) {

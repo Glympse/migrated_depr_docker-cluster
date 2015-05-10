@@ -30,15 +30,37 @@
         </div>
     </div>
 
-    <span ng-repeat="name in container.Names">
-        <label>{{ name }}</label>
-        {{ $last ? '' : ' ' }}
-    </span> <br/>
-    {{ container.Image }} <br/>
+    <p>
+        <span ng-repeat="name in container.Names">
+            <label>{{ name }}</label>
+            {{ $last ? '' : ' ' }}
+        </span> <br/>
+        {{ container.Image }} <br/>
+        {{ container.Status }}
+    </p>
+
     <span ng-repeat="port in container.Ports">
-        {{ port.PublicPort }}:{{ port.PrivatePort }}
+        <span class="dropdown">
+            <button class="btn btn-info btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">
+                {{ port.PublicPort }}
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li role="presentation" class="dropdown-header">Private: {{ port.PrivatePort }}</li>
+                <li role="presentation" class="divider"></li>
+                <li role="presentation" ng-click="launchTool('sync', port)">
+                    <a role="menuitem" tabindex="-1" href="">Sync</a>
+                </li>
+                <li role="presentation" class="divider"></li>
+                <li role="presentation">
+                    <a role="menuitem" tabindex="-1" href="https://{{ host.network.public_ip }}:{{ port.PublicPort }}" target="_blank">Launch (https)</a>
+                </li>
+                <li role="presentation">
+                    <a role="menuitem" tabindex="-1" href="http://{{ host.network.public_ip }}:{{ port.PublicPort }}" target="_blank">Launch (http)</a>
+                </li>
+            </ul>
+        </span>
         {{ $last ? '' : ' ' }}
-    </span> <br/>
-    {{ container.Status }} <br/>
+    </span>
 
 </div>
