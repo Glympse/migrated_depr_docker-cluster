@@ -42,7 +42,6 @@
 
             }, function () {});
 
-
         }
 
         $scope.createContainer = function() {
