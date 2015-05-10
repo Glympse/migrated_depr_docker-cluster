@@ -1,0 +1,30 @@
+<div ng-controller="ContainerController">
+    <p>
+        {{ container.Id | limitTo:12 }} <br/>
+        {{ container.Image }} <br/>
+        {{ container.Names }} <br/>
+        {{ container.Status }} <br/>
+    </p>
+    <p>
+        <button ng-click="start()" type="button" class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-play"></span>
+        </button> &nbsp;
+        <button ng-click="stop()" type="button" class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-stop"></span>
+        </button> &nbsp;
+        <button ng-click="restart()" type="button" class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-repeat"></span>
+        </button> &nbsp; | &nbsp;
+        <button ng-click="remove()" type="button" class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-remove"></span>
+        </button>
+    </p>
+    <p>
+        <button ng-click="showLogs()" type="button" class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-console"></span>
+        </button> &nbsp;
+        <button ng-click="showInfo()" type="button" class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-info-sign"></span>
+        </button>
+    </p>
+</div>

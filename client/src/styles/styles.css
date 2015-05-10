@@ -1,0 +1,52 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    padding-top: 70px;
+    padding-bottom: 40px;
+}
+
+.nav > li > a {
+    padding: 10px 10px;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    background-color: #f5f5f5;
+    padding-top: 10px;
+}
+
+#modal-json-editor {
+    height: 500px;
+}
+
+#sync-file-editor {
+    height: 700px;
+}
+
+/**
+ * Tree
+ */
+
+.angular-ui-tree-handle {
+    border: 1px solid #dae2ea;
+    font-weight: normal;
+    padding: 10px 10px;
+}
+
+.angular-ui-tree-handle:hover {
+    color: #438eb9;
+    border-color: #dce2e8;
+}
+
+.angular-ui-tree-placeholder {
+    border: 2px dashed #bed2db;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}

@@ -1,0 +1,29 @@
+{
+    "name": "DockerCluster",
+    "version": "0.0.1",
+    "description": "DockerCluster",
+    "authors": [],
+    "license": "MIT",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "devDependencies": {
+      "angular-mocks": "~1.3.8",
+      "sinon": "http://sinonjs.org/releases/sinon-1.12.1.js",
+      "bardjs": "~0.1.0"
+    },
+    "dependencies": {
+        "jquery": "~2.1.0",
+        "angular": "~1.3.8",
+        "angular-route": "~1.3.15",
+        "bootstrap": "~3.3.0",
+        "font-awesome": "~4.2.0",
+        "angular-bootstrap": "~0.13.0",
+        "angular-ui-ace": "~0.2.3",
+        "angular-ui-tree": "~2.4.0"
+    }
+}

@@ -1,0 +1,39 @@
+<div class="container" ng-controller="ShellController">
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#/">Docker Cluster</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Main</div>
+                <div class="list-group">
+                    <a href="#/hosts" class="list-group-item">Hosts</a>
+                    <a href="#/services" class="list-group-item">Services</a>
+                    <a href="#/deploy" class="list-group-item">Deploy</a>
+                    <a href="#/update" class="list-group-item">Update</a>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">Tools</div>
+                <div class="list-group">
+                    <a href="#/sync" class="list-group-item">Sync</a>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="col-md-10">
+            <div ng-view></div>
+        </div>
+    </div>
+</div>
+
+<div id="footer">
+    <div class="container">
+        <span>Docker Cluster</span>
+        <span class="pull-right">&copy; Glympse</span>
+    </div>
+</div>

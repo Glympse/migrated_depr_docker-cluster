@@ -1,0 +1,56 @@
+<div ng-controller="HostController">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <label>
+                {{ host.name }}
+            </label>
+            <div class="pull-right">
+                {{ host.cloud.instance_type }}
+            </div>
+        </div>
+
+        <ul class="list-group">
+            <li class="list-group-item">
+                Provider
+                <div class="pull-right">
+                    {{ host.cloud.provider }} /
+                    {{ host.cloud.region }} /
+                    {{ host.cloud.zone }}
+                </div>
+            </li>
+            <li class="list-group-item">
+                IP
+                <div class="pull-right">
+                    {{ host.network.public_ip }}
+                </div>
+            </li>
+        </ul>
+
+        <div class="panel-body">
+            <button ng-click="createContainer()" type="button" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-play"></span>
+            </button> &nbsp;
+            <button ng-click="refresh()" type="button" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-refresh"></span>
+            </button> &nbsp; | &nbsp;
+            <button ng-click="showInfo()" type="button" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-info-sign"></span>
+            </button> &nbsp;
+            <button ng-click="showImages()" type="button" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-list"></span>
+            </button>
+        </div>
+
+        <ul class="list-group">
+            <li class="list-group-item">
+                <strong>
+                    Containers
+                </strong>
+            </li>
+            <li class="list-group-item" ng-repeat="container in containers">
+                <div ng-include="'/app/hosts/container.html'"></div>
+            </li>
+        </ul>
+
+    </div>
+</div>

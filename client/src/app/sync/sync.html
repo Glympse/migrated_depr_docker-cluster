@@ -1,0 +1,52 @@
+<div ng-controller="SyncController">
+    <div class="row">
+        <div class="col-md-9 col-md-offset-3">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label>Sync Agent API</label>
+                    &nbsp;&nbsp;
+                    <input type="text" class="form-control" placeholder="http://host:port" ng-model="base">
+                    &nbsp;&nbsp;
+                </div>
+                <button ng-click="connect()" class="btn btn-default">Connect</button>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-md-3">
+            <!-- Nested node template -->
+            <script type="text/ng-template" id="sync_tree_nodes.html">
+                <div ui-tree-handle class="tree-node tree-node-content" ng-click="selected(node)">
+                    {{node.title}}
+                </div>
+                <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
+                    <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'sync_tree_nodes.html'">
+                    </li>
+                </ol>
+            </script>
+            <div ui-tree data-drag-enabled="false">
+                <ol ui-tree-nodes="" ng-model="data">
+                    <li ng-repeat="node in data" ui-tree-node ng-include="'sync_tree_nodes.html'"></li>
+                </ol>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div ui-tree data-drag-enabled="false">
+                <ol ui-tree-nodes="" ng-model="current">
+                    <li ng-repeat="node in current" ui-tree-node ng-include="'sync_tree_nodes.html'"></li>
+                </ol>
+            </div>
+            <br/>
+            <div id="sync-file-editor" ui-ace="{
+                useWrapMode: true,
+                onLoad: aceLoaded
+            }"></div>
+            <br/>
+            <div class="pull-right">
+                <button ng-click="update()" class="btn btn-primary">Update</button>
+            </div>
+        </div>
+    </div>
+    <br/>
+</div>
