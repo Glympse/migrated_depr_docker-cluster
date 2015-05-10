@@ -4,8 +4,34 @@
             <label>
                 {{ host.name }}
             </label>
+            / {{ host.cloud.instance_type }}
             <div class="pull-right">
-                {{ host.cloud.instance_type }}
+
+                <div class="dropdown">
+                    <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li role="presentation" ng-click="createImage()">
+                            <a role="menuitem" tabindex="-1" href="">Create an Image</a>
+                        </li>
+                        <li role="presentation" ng-click="createContainer()">
+                            <a role="menuitem" tabindex="-1" href="">Create a Container</a>
+                        </li>
+                        <li role="presentation" class="divider"></li>
+                        <li role="presentation" ng-click="showInfo()">
+                            <a role="menuitem" tabindex="-1" href="">Show Info</a>
+                        </li>
+                        <li role="presentation" ng-click="showImages()">
+                            <a role="menuitem" tabindex="-1" href="">Show Images</a>
+                        </li>
+                        <li role="presentation" class="divider"></li>
+                        <li role="presentation" ng-click="refresh()">
+                            <a role="menuitem" tabindex="-1" href="">Refresh</a>
+                        </li>
+                    </ul>
+                </div>
+
             </div>
         </div>
 
@@ -25,21 +51,6 @@
                 </div>
             </li>
         </ul>
-
-        <div class="panel-body">
-            <button ng-click="createContainer()" type="button" class="btn btn-default btn-sm">
-                <span class="glyphicon glyphicon-play"></span>
-            </button> &nbsp;
-            <button ng-click="refresh()" type="button" class="btn btn-default btn-sm">
-                <span class="glyphicon glyphicon-refresh"></span>
-            </button> &nbsp; | &nbsp;
-            <button ng-click="showInfo()" type="button" class="btn btn-default btn-sm">
-                <span class="glyphicon glyphicon-info-sign"></span>
-            </button> &nbsp;
-            <button ng-click="showImages()" type="button" class="btn btn-default btn-sm">
-                <span class="glyphicon glyphicon-list"></span>
-            </button>
-        </div>
 
         <ul class="list-group">
             <li class="list-group-item">

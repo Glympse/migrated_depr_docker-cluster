@@ -10,6 +10,7 @@
             getContainerInfo: getContainerInfo,
             getHostInfo: getHostInfo,
             getImagesList: getImagesList,
+            createImage: createImage,
             createContainer: createContainer,
             startContainer: startContainer,
             stopContainer: stopContainer,
@@ -102,6 +103,14 @@
                 = getBaseUrl(host)
                 + "images/json?all=true";
             return $http.get(url);
+        }
+
+        // NEXT: Move to app.api.docker.imagesService
+        function createImage(host, fromImage) {
+            var url
+                = getBaseUrl(host)
+                + "images/create?fromImage=" + fromImage;
+            return $http.post(url);
         }
     });
 

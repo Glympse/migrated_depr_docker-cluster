@@ -11,6 +11,40 @@
             $scope.refresh();
         }
 
+        $scope.createImage = function() {
+            var template = {
+                "fromImage": "",
+            };
+
+            var editor = $modal.open({
+                templateUrl: '/app/controls/modal.json.html',
+                controller: 'JsonController',
+                size: "lg",
+                resolve: {
+                    title: function() {
+                        return "Create an Image";
+                    },
+                    content: function () {
+                        return angular.toJson(template, true);
+                    }
+                }
+            });
+
+            editor.result.then(function (params) {
+
+                // Extract arguments
+                var paramsBlob = angular.fromJson(params);
+                var fromImage = paramsBlob["fromImage"];
+
+                containersService.createImage($scope.host, fromImage).success(function(data) {
+                    $scope.refresh();
+                });
+
+            }, function () {});
+
+
+        }
+
         $scope.createContainer = function() {
 
             var template = {
@@ -91,8 +125,7 @@
             });
 
             creator.result.then(function (params) {
-
-                // NEXT: Ask for/generate real name.
+                // Extract the name.
                 var paramsBlob = angular.fromJson(params);
                 var name = paramsBlob["Name"];
 
