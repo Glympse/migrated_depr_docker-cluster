@@ -4,31 +4,28 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="#/">Docker Cluster</a>
             </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#/hosts">Hosts</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            Tools <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#/sync">Sync</a></li>
+                            <li><a href="#/registry">Registry</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Main</div>
-                <div class="list-group">
-                    <a href="#/hosts" class="list-group-item">Hosts</a>
-                    <a href="#/services" class="list-group-item">Services</a>
-                    <a href="#/deploy" class="list-group-item">Deploy</a>
-                    <a href="#/update" class="list-group-item">Update</a>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">Tools</div>
-                <div class="list-group">
-                    <a href="#/sync" class="list-group-item">Sync</a>
-                </div>
-            </div>
-        </div>
-        <div id="content" class="col-md-10">
-            <div ng-view></div>
-        </div>
-    </div>
+    <div ng-view></div>
 </div>
 
 <div id="footer">

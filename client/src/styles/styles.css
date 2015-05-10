@@ -8,10 +8,6 @@ body {
     padding-bottom: 40px;
 }
 
-.nav > li > a {
-    padding: 10px 10px;
-}
-
 #footer {
     position: absolute;
     bottom: 0;
