@@ -46,68 +46,7 @@
 
         $scope.createContainer = function() {
 
-            var template = {
-                "Name": "",
-                // "Hostname": "",
-                // "Domainname": "",
-                "User": "",
-                // "Memory": 0,
-                // "MemorySwap": 0,
-                // "CpuShares": 512,
-                // "Cpuset": "0,1",
-                "AttachStdin": false,
-                "AttachStdout": true,
-                "AttachStderr": true,
-                "Tty": false,
-                "OpenStdin": false,
-                "StdinOnce": false,
-                "Env": [],
-                // "Cmd": [
-                //     "date"
-                // ],
-                "Entrypoint": "",
-                "Image": "google/cadvisor:latest",
-                "Volumes": {
-                //    "/tmp": {}
-                },
-                "WorkingDir": "",
-                "NetworkDisabled": false,
-                // "MacAddress": "12:34:56:78:9a:bc",
-                // "ExposedPorts": {
-                //     "22/tcp": {}
-                // },
-                // "SecurityOpts": [""],
-                "HostConfig": {
-                    "Binds": [
-                        "/:/rootfs:ro",
-                        "/var/run:/var/run:rw",
-                        "/sys:/sys:ro",
-                        "/var/lib/docker/:/var/lib/docker:ro"
-                    ],
-                    "Links": [
-                    //    "redis3:redis"
-                    ],
-                    // "LxcConf": {"lxc.utsname":"docker"},
-                    "PortBindings": {
-                        "8080/tcp": [{ "HostPort": "8080" }]
-                    },
-                    "PublishAllPorts": false,
-                    "Privileged": false,
-                    "ReadonlyRootfs": false,
-                    // "Dns": ["8.8.8.8"],
-                    // "DnsSearch": [""],
-                    // "ExtraHosts": null,
-                    // "VolumesFrom": ["parent", "other:ro"],
-                    // "CapAdd": ["NET_ADMIN"],
-                    // "CapDrop": ["MKNOD"],
-                    "RestartPolicy": {
-                        "Name": "always",
-                        // "MaximumRetryCount": 0
-                    },
-                    "NetworkMode": "bridge",
-                    // "Devices": []
-                }
-            };
+            var template = {};
 
             var creator = $modal.open({
                 templateUrl: '/app/controls/modal.json.html',

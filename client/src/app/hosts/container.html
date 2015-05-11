@@ -12,6 +12,9 @@
                 <li role="presentation" ng-click="stop()">
                     <a role="menuitem" tabindex="-1" href="">Stop</a>
                 </li>
+                <li role="presentation" ng-click="kill()">
+                    <a role="menuitem" tabindex="-1" href="">Kill</a>
+                </li>
                 <li role="presentation" ng-click="restart()">
                     <a role="menuitem" tabindex="-1" href="">Restart</a>
                 </li>
@@ -23,8 +26,11 @@
                     <a role="menuitem" tabindex="-1" href="">Show Info</a>
                 </li>
                 <li role="presentation" class="divider"></li>
-                <li role="presentation" ng-click="remove()">
+                <li role="presentation" ng-click="remove(false)">
                     <a role="menuitem" tabindex="-1" href="">Remove</a>
+                </li>
+                <li role="presentation" ng-click="remove(true)">
+                    <a role="menuitem" tabindex="-1" href="">Remove (force)</a>
                 </li>
             </ul>
         </div>

@@ -14,6 +14,7 @@
             createContainer: createContainer,
             startContainer: startContainer,
             stopContainer: stopContainer,
+            killContainer: killContainer,
             restartContainer: restartContainer,
             removeContainer: removeContainer
         };
@@ -74,6 +75,14 @@
             return $http.post(url);
         }
 
+        function killContainer(host, container) {
+            var url
+                = getBaseUrl(host)
+                + "containers/" + container.Id
+                + "/kill";
+            return $http.post(url);
+        }
+
         function restartContainer(host, container) {
             var url
                 = getBaseUrl(host)
@@ -82,10 +91,11 @@
             return $http.post(url);
         }
 
-        function removeContainer(host, container) {
+        function removeContainer(host, container, force) {
             var url
                 = getBaseUrl(host)
-                + "containers/" + container.Id;
+                + "containers/" + container.Id
+                + "?force=" + force;
             return $http.delete(url);
         }
 

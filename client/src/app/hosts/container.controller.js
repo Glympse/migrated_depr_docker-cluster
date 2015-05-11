@@ -19,14 +19,20 @@
             });
         }
 
+        $scope.kill = function() {
+            containersService.killContainer($scope.host, $scope.container).success(function(data) {
+                $scope.$parent.refresh();
+            });
+        }
+
         $scope.restart = function() {
             containersService.restartContainer($scope.host, $scope.container).success(function(data) {
                 $scope.$parent.refresh();
             });
         }
 
-        $scope.remove = function() {
-            containersService.removeContainer($scope.host, $scope.container).success(function(data) {
+        $scope.remove = function(force) {
+            containersService.removeContainer($scope.host, $scope.container, force).success(function(data) {
                 $scope.$parent.refresh();
             });
         }
