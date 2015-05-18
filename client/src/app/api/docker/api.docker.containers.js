@@ -23,7 +23,7 @@
         function getBaseUrl(host) {
             var baseUrl
                 = host.docker.protocol + "://"
-                + host.network.public_dns + ":"
+                + host.network.public_ip + ":"
                 + host.docker.port + "/";
             return baseUrl;
         }
@@ -116,11 +116,19 @@
         }
 
         // NEXT: Move to app.api.docker.imagesService
-        function createImage(host, fromImage) {
+        function createImage(host, fromImage, xRegistryAuth) {
             var url
                 = getBaseUrl(host)
                 + "images/create?fromImage=" + fromImage;
-            return $http.post(url);
+            var req = {
+                method: "POST",
+                url: url,
+                headers: {}
+            };
+            if ( xRegistryAuth ) {
+                req.headers["X-Registry-Auth"] = xRegistryAuth;
+            }
+            return $http(req);
         }
     });
 

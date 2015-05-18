@@ -14,6 +14,7 @@
         $scope.createImage = function() {
             var template = {
                 "fromImage": "",
+                "X-Registry-Auth": ""
             };
 
             var editor = $modal.open({
@@ -35,8 +36,9 @@
                 // Extract arguments
                 var paramsBlob = angular.fromJson(params);
                 var fromImage = paramsBlob["fromImage"];
+                var xRegistryAuth = paramsBlob["X-Registry-Auth"];
 
-                containersService.createImage($scope.host, fromImage).success(function(data) {
+                containersService.createImage($scope.host, fromImage, xRegistryAuth).success(function(data) {
                     $scope.refresh();
                 });
 

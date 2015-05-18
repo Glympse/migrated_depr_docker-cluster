@@ -7,15 +7,14 @@ class Endpoint(server.api.rest.JsonRequestHandler):
                 "_id": "1",
                 "name": "p-worker-c01",
                 "network": {
-                    "public_dns": "ec2-52-7-30-35.compute-1.amazonaws.com",
-                    "public_ip": "52.7.30.35"
+                    "public_ip": "52.7.30.35",
+                    "private_ip": "172.31.41.223"
                 },
                 "cloud": {
                     "provider": "aws",
                     "region": "us-east-1",
                     "zone": "c",
-                    "instance_type": "t2.micro",
-                    "instance_id": "i-6d83e0bb"
+                    "instance_type": "t2.micro"
                 },
                 "docker": {
                     "protocol": "http",
@@ -31,15 +30,14 @@ class Endpoint(server.api.rest.JsonRequestHandler):
                 "_id": "2",
                 "name": "p-worker-c02",
                 "network": {
-                    "public_dns": "ec2-52-7-137-138.compute-1.amazonaws.com",
-                    "public_ip": "52.7.137.138"
+                    "public_ip": "52.7.137.138",
+                    "private_ip": "172.31.35.242"
                 },
                 "cloud": {
                     "provider": "aws",
                     "region": "us-east-1",
                     "zone": "c",
-                    "instance_type": "t2.micro",
-                    "instance_id": "i-84debc52"
+                    "instance_type": "t2.micro"
                 },
                 "docker": {
                     "protocol": "http",
@@ -52,18 +50,40 @@ class Endpoint(server.api.rest.JsonRequestHandler):
                 }
             },
             {
-                "_id": "3",
-                "name": "p-worker-c03",
+                "_id": "4",
+                "name": "p-worker-c04",
                 "network": {
-                    "public_dns": "ec2-52-7-48-222.compute-1.amazonaws.com",
-                    "public_ip": "52.7.48.222"
+                    "public_ip": "52.6.126.27",
+                    "private_ip": "172.31.44.123"
                 },
                 "cloud": {
                     "provider": "aws",
                     "region": "us-east-1",
                     "zone": "c",
-                    "instance_type": "t2.micro",
-                    "instance_id": "i-ffd8b029"
+                    "instance_type": "t2.micro"
+                },
+                "docker": {
+                    "protocol": "http",
+                    "port": 2375
+                },
+                "tags": {
+                    "cloud": "aws",
+                    "region": "us-east-1",
+                    "zone": "us-east-1c"
+                }
+            },
+            {
+                "_id": "5",
+                "name": "p-worker-c05",
+                "network": {
+                    "public_ip": "52.7.88.227",
+                    "private_ip": "172.31.36.9"
+                },
+                "cloud": {
+                    "provider": "aws",
+                    "region": "us-east-1",
+                    "zone": "c",
+                    "instance_type": "t2.micro"
                 },
                 "docker": {
                     "protocol": "http",
