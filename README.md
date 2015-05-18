@@ -1,6 +1,6 @@
 # Docker Cluster
 The loot is aimed to provide convenience way to micromanage cluster of Docker machines. 
-[Docker Remore API](https://docs.docker.com/reference/api/docker_remote_api_v1.18/) 
+[Docker Remote API](https://docs.docker.com/reference/api/docker_remote_api_v1.18/) 
 is used as a control interface for manipulting cluster hosts. 
 
 Docker hosts can be created using 'worker' template from 
