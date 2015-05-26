@@ -59,10 +59,10 @@
                 </li>
                 <li role="presentation" class="divider"></li>
                 <li role="presentation">
-                    <a role="menuitem" tabindex="-1" href="https://{{ host.network.public_ip }}:{{ port.PublicPort }}" target="_blank">Launch (https)</a>
+                    <a role="menuitem" tabindex="-1" href="https://{{ host.network.private_ip }}:{{ port.PublicPort }}" target="_blank">Launch (https)</a>
                 </li>
                 <li role="presentation">
-                    <a role="menuitem" tabindex="-1" href="http://{{ host.network.public_ip }}:{{ port.PublicPort }}" target="_blank">Launch (http)</a>
+                    <a role="menuitem" tabindex="-1" href="http://{{ host.network.private_ip }}:{{ port.PublicPort }}" target="_blank">Launch (http)</a>
                 </li>
             </ul>
         </span>

@@ -23,7 +23,7 @@
         function getBaseUrl(host) {
             var baseUrl
                 = host.docker.protocol + "://"
-                + host.network.public_ip + ":"
+                + host.network.private_ip + ":"
                 + host.docker.port + "/";
             return baseUrl;
         }
