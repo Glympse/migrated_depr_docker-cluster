@@ -26,7 +26,7 @@
             if ( $rootScope.currentTool["sync"] ) {
                 $scope.base
                     = "http://"
-                    + $rootScope.currentTool.sync.host.network.public_ip + ":"
+                    + $rootScope.currentTool.sync.host.network.private_ip + ":"
                     + $rootScope.currentTool.sync.port.PublicPort;
 
                 $scope.connect();
