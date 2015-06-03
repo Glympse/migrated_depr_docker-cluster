@@ -1,6 +1,6 @@
-import server.api.rest
+import api.rest
 
-class Endpoint(server.api.rest.JsonRequestHandler):
+class Endpoint(api.rest.JsonRequestHandler):
     def handle(self, args):
         return [
             {

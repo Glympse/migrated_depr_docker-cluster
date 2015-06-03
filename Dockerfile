@@ -6,12 +6,13 @@ FROM ubuntu:14.04
 # Install Python 3 stuff
 RUN apt-get install -y python3-setuptools
 RUN easy_install3 pip
+RUN pip install --upgrade pip
 
 # Bundle app source
 COPY . /src
 
 # Add and install Python modules
-RUN pip install -r /src/requirements.txt
+RUN pip install -r /src/server/requirements.txt
 
 # Container port
 EXPOSE 8080
@@ -19,5 +20,8 @@ EXPOSE 8080
 # Set default container command
 ENTRYPOINT ["python3"]
 
+# Set working directory
+WORKDIR /src/server
+
 # Run the app
-CMD ["/src/app.py"]
+CMD ["/src/server/app.py"]
