@@ -14,8 +14,8 @@ docker build -t $IMAGE_NAME .
 
 # Mark image with registry URL and tag
 docker tag -f $IMAGE_NAME $TAGGED_IMAGE
-docker tag -f $IMAGE_NAME LATEST_IMAGE
+docker tag -f $IMAGE_NAME $LATEST_IMAGE
 
 # Push image to repote registry
 docker push $TAGGED_IMAGE
-docker push LATEST_IMAGE
+docker push $LATEST_IMAGE
