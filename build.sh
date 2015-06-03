@@ -7,7 +7,7 @@ IMAGE_NAME=tools/docker-cluster
 # Helpers
 IMAGE_TAG=$(git rev-parse --short HEAD)
 TAGGED_IMAGE=$REGISTRY_URL/$IMAGE_NAME:$IMAGE_TAG
-LATEST_IMAGE=$REGISTRY_URL/$IMAGE_NAME:$IMAGE_TAG
+LATEST_IMAGE=$REGISTRY_URL/$IMAGE_NAME:latest
 
 # Build the image
 docker build -t $IMAGE_NAME .
