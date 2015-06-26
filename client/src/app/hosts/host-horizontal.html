@@ -1,0 +1,72 @@
+<div ng-controller="HostController">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <label>
+                        {{ host.name }}
+                    </label>
+                    / {{ host.cloud.instance_type }}
+                    <div class="pull-right">
+                        <div class="dropdown">
+                            <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li role="presentation" ng-click="createImage()">
+                                    <a role="menuitem" tabindex="-1" href="">Create an Image</a>
+                                </li>
+                                <li role="presentation" ng-click="createContainer()">
+                                    <a role="menuitem" tabindex="-1" href="">Create a Container</a>
+                                </li>
+                                <li role="presentation" class="divider"></li>
+                                <li role="presentation" ng-click="showInfo()">
+                                    <a role="menuitem" tabindex="-1" href="">Show Info</a>
+                                </li>
+                                <li role="presentation" ng-click="showImages()">
+                                    <a role="menuitem" tabindex="-1" href="">Show Images</a>
+                                </li>
+                                <li role="presentation" class="divider"></li>
+                                <li role="presentation" ng-click="refresh()">
+                                    <a role="menuitem" tabindex="-1" href="">Refresh</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        Provider
+                        <div class="pull-right">
+                            {{ host.cloud.provider }} /
+                            {{ host.cloud.region }} /
+                            {{ host.cloud.zone }}
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        IP
+                        <div class="pull-right">
+                            {{ host.network.public_ip }} / {{ host.network.private_ip }}
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-4" ng-repeat="container in containers">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div ng-include="'/app/hosts/container.html'"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

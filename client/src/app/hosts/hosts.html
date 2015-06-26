@@ -1,6 +1,22 @@
 <div ng-controller="HostsController">
     <div class="row">
-        <div class="col-md-3" ng-repeat="host in hosts">
+        <div class="pull-right">
+            <div class="btn-group" role="group" aria-label="...">
+                <button type="button" class="btn btn-default" ng-click="layout_horizontal = !layout_horizontal;">
+                    <span class="glyphicon glyphicon-resize-horizontal" aria-hidden="true"></span>
+                </button>
+                <button type="button" class="btn btn-default" ng-click="layout_horizontal = !layout_horizontal;">
+                    <span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="row" ng-repeat="host in hosts" ng-show="layout_horizontal">
+        <div ng-include="'/app/hosts/host-horizontal.html'"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-3" ng-repeat="host in hosts" ng-hide="layout_horizontal">
             <div ng-include="'/app/hosts/host.html'"></div>
         </div>
     </div>
