@@ -94,5 +94,28 @@ class Endpoint(api.rest.JsonRequestHandler):
                     "region": "us-east-1",
                     "zone": "us-east-1c"
                 }
+            },
+            {
+                "_id": "6",
+                "name": "p-worker-c06",
+                "network": {
+                    "public_ip": "54.164.191.132",
+                    "private_ip": "172.31.46.33"
+                },
+                "cloud": {
+                    "provider": "aws",
+                    "region": "us-east-1",
+                    "zone": "c",
+                    "instance_type": "t2.micro"
+                },
+                "docker": {
+                    "protocol": "http",
+                    "port": 2375
+                },
+                "tags": {
+                    "cloud": "aws",
+                    "region": "us-east-1",
+                    "zone": "us-east-1c"
+                }
             }
         ]
