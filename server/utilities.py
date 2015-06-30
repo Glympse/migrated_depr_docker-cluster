@@ -1,4 +1,5 @@
 import os
+import configparser
 import signal
 import xml.etree.ElementTree
 import json
@@ -30,6 +31,20 @@ class File:
     @staticmethod
     def write_json(path, obj):   
         File.write(path, json.dumps(obj, indent=2, separators=(',', ': ')))
+
+class Env:
+    def __init__(self):
+        if os.path.exists(".env"):
+            self.config = configparser.ConfigParser()
+            self.config.read('.env')
+        else:
+            self.config = None
+
+    def get(self, name):
+        if self.config:
+            return self.config.get("DEFAULT", name)
+        else:
+            return os.environ[name]
 
 class TornadoServer:
     def __init__(self, app, port):

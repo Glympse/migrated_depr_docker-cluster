@@ -2,120 +2,38 @@ import api.rest
 
 class Endpoint(api.rest.JsonRequestHandler):
     def handle(self, args):
-        return [
-            {
-                "_id": "1",
-                "name": "p-worker-c01",
-                "network": {
-                    "public_ip": "52.7.30.35",
-                    "private_ip": "172.31.41.223"
-                },
-                "cloud": {
-                    "provider": "aws",
-                    "region": "us-east-1",
-                    "zone": "c",
-                    "instance_type": "t2.micro"
-                },
-                "docker": {
-                    "protocol": "http",
-                    "port": 2375
-                },
-                "tags": {
-                    "cloud": "aws",
-                    "region": "us-east-1",
-                    "zone": "us-east-1c"
+        try:
+            tag_name = self.manager.env.get("CLUSTER_TAG_NAME")
+            tag_value = self.manager.env.get("CLUSTER_TAG_VALUE")
+            compute_instances = self.manager.provider.find_instances_by_tag(tag_name, tag_value)
+
+            instances = []
+            for compute_instance in compute_instances:
+                instance = {
+                    "_id": compute_instance.id,
+                    "name": compute_instance.tags["Name"],
+                    "network": {
+                        "public_ip": compute_instance.ip_address,
+                        "private_ip": compute_instance.private_ip_address
+                    },
+                    "cloud": {
+                        "provider": "aws",
+                        "region": compute_instance.region.name,
+                        "zone": compute_instance.placement,
+                        "instance_type": compute_instance.instance_type
+                    },
+                    "docker": {
+                        "protocol": "http",
+                        "port": 2375
+                    },
+                    "tags": {
+                        "cloud": "aws",
+                        "region": compute_instance.region.name,
+                        "zone": compute_instance.placement
+                    }
                 }
-            },
-            {
-                "_id": "2",
-                "name": "p-worker-c02",
-                "network": {
-                    "public_ip": "52.7.137.138",
-                    "private_ip": "172.31.35.242"
-                },
-                "cloud": {
-                    "provider": "aws",
-                    "region": "us-east-1",
-                    "zone": "c",
-                    "instance_type": "t2.micro"
-                },
-                "docker": {
-                    "protocol": "http",
-                    "port": 2375
-                },
-                "tags": {
-                    "cloud": "aws",
-                    "region": "us-east-1",
-                    "zone": "us-east-1c"
-                }
-            },
-            {
-                "_id": "4",
-                "name": "p-worker-c04",
-                "network": {
-                    "public_ip": "52.6.126.27",
-                    "private_ip": "172.31.44.123"
-                },
-                "cloud": {
-                    "provider": "aws",
-                    "region": "us-east-1",
-                    "zone": "c",
-                    "instance_type": "t2.micro"
-                },
-                "docker": {
-                    "protocol": "http",
-                    "port": 2375
-                },
-                "tags": {
-                    "cloud": "aws",
-                    "region": "us-east-1",
-                    "zone": "us-east-1c"
-                }
-            },
-            {
-                "_id": "5",
-                "name": "p-worker-c05",
-                "network": {
-                    "public_ip": "52.7.88.227",
-                    "private_ip": "172.31.36.9"
-                },
-                "cloud": {
-                    "provider": "aws",
-                    "region": "us-east-1",
-                    "zone": "c",
-                    "instance_type": "t2.micro"
-                },
-                "docker": {
-                    "protocol": "http",
-                    "port": 2375
-                },
-                "tags": {
-                    "cloud": "aws",
-                    "region": "us-east-1",
-                    "zone": "us-east-1c"
-                }
-            },
-            {
-                "_id": "6",
-                "name": "p-worker-c06",
-                "network": {
-                    "public_ip": "54.164.191.132",
-                    "private_ip": "172.31.46.33"
-                },
-                "cloud": {
-                    "provider": "aws",
-                    "region": "us-east-1",
-                    "zone": "c",
-                    "instance_type": "t2.micro"
-                },
-                "docker": {
-                    "protocol": "http",
-                    "port": 2375
-                },
-                "tags": {
-                    "cloud": "aws",
-                    "region": "us-east-1",
-                    "zone": "us-east-1c"
-                }
-            }
-        ]
+                instances.append(instance)
+
+            return instances
+        except Exception as e:
+            raise NameError("failed_to_find")

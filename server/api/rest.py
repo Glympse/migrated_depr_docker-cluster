@@ -7,6 +7,9 @@ Implements JSON encoding and JSONP on top of tornado.web.RequestHandler.
 """
 class JsonRequestHandler(tornado.web.RequestHandler):
 
+    def initialize(self, manager):
+        self.manager = manager
+
     @tornado.web.asynchronous
     def get(self, **args):
         self.process(args)
@@ -36,7 +39,7 @@ class JsonRequestHandler(tornado.web.RequestHandler):
             # Propagate to business logic
             response = { "result": "ok", "body": self.handle(args) }
         except NameError as e:
-            response = { "result": "failure", "error": e.message }
+            response = { "result": "failure", "error": str(e) }
         except:
             response = { "result": "failure" }
 

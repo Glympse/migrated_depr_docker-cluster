@@ -6,3 +6,4 @@
 
 # Server
 *.pyc
+.env
