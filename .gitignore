@@ -7,3 +7,6 @@
 # Server
 *.pyc
 .env
+
+# Config
+.config
