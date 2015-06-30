@@ -9,6 +9,8 @@ class Endpoint(api.rest.JsonRequestHandler):
 
             instances = []
             for compute_instance in compute_instances:
+                if "running" != compute_instance.state:
+                    continue
                 instance = {
                     "_id": compute_instance.id,
                     "name": compute_instance.tags["Name"],
