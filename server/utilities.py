@@ -33,10 +33,10 @@ class File:
         File.write(path, json.dumps(obj, indent=2, separators=(',', ': ')))
 
 class Env:
-    def __init__(self):
-        if os.path.exists(".env"):
+    def __init__(self, file=".env"):
+        if file and os.path.exists(file):
             self.config = configparser.ConfigParser()
-            self.config.read('.env')
+            self.config.read(file)
         else:
             self.config = None
 
