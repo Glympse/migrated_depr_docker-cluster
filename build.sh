@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # App name/home registry
-REGISTRY_URL=registry.enterprise.glympse.com
+REGISTRY_URL=registry.sandbox.glympse.com
 IMAGE_NAME=tools/docker-cluster
 
 # Helpers
