@@ -7,7 +7,6 @@
     ]).
 
     config(['$routeProvider', function($routeProvider) {
-        // NEXT: Show hosts at root as well for now.
         $routeProvider.when('/', {
             controller: 'HostsController',
             templateUrl: '/app/hosts/hosts.html'
