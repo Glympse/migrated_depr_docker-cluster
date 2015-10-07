@@ -3,7 +3,7 @@
 
     angular.module('app.sync').
 
-    controller('SyncController', function($rootScope, $scope, $modal, syncService) {
+    controller('SyncController', function($rootScope, $scope, $modal, syncService, controlsService) {
 
         function clear() {
             var template = [{
@@ -71,33 +71,17 @@
                 "name": "",
             };
 
-            var editor = $modal.open({
-                templateUrl: '/app/controls/modal.json.html',
-                controller: 'JsonController',
+            controlsService.showModal({
+                title: "Create New File",
+                template: template,
                 size: "lg",
-                resolve: {
-                    title: function() {
-                        return "Create New File";
-                    },
-                    content: function () {
-                        return angular.toJson(template, true);
-                    }
+                ok: function(params) {
+                    var name = params["name"];
+                    syncService.updateItem($scope.base, name, "").success(function(data) {
+                        $scope.connect();
+                    });
                 }
             });
-
-            editor.result.then(function (params) {
-                // Extract arguments
-                var paramsBlob = angular.fromJson(params);
-                var name = paramsBlob["name"];
-
-                syncService.updateItem($scope.base, name, "").success(function(data) {
-                    $scope.connect();
-                });
-
-            }, function () {});
-
-
-
         };
 
         init();

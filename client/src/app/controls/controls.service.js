@@ -27,7 +27,7 @@
                 var editor = $modal.open(editorConfig);
                 editor.result.then(function(data) {
                     if ( config.ok ) {
-                        var blob = angular.fromJson(data);
+                        var blob = JSON.parse(data);
                         config.ok(blob);
                     }
                 }, function () {});

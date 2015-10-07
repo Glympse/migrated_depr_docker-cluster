@@ -23,9 +23,8 @@
                 size: "lg",
                 ok: function(params) {
                     // Extract arguments
-                    var paramsBlob = angular.fromJson(params);
-                    var fromImage = paramsBlob["fromImage"];
-                    var xRegistryAuth = paramsBlob["X-Registry-Auth"];
+                    var fromImage = params["fromImage"];
+                    var xRegistryAuth = params["X-Registry-Auth"];
 
                     // Make API call to create an image.
                     containersService.createImage($scope.host, fromImage, xRegistryAuth).success(function(data) {
@@ -41,7 +40,15 @@
         }
 
         $scope.createContainer = function() {
-            var template = {};
+            var template = {
+                "Name": "",
+                "Image": "",
+                "HostConfig": {
+                    "RestartPolicy": {
+                        "Name": "always"
+                    }
+                }
+            };
 
             controlsService.showModal({
                 title: "Create a Container",
@@ -49,8 +56,7 @@
                 size: "lg",
                 ok: function(params) {
                     // Extract the name.
-                    var paramsBlob = angular.fromJson(params);
-                    var name = paramsBlob["Name"];
+                    var name = params["Name"];
 
                     // Make API call to create a container.
                     containersService.createContainer($scope.host, name, params).success(function(data) {
