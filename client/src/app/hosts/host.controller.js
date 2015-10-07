@@ -31,7 +31,8 @@
                     containersService.createImage($scope.host, fromImage, xRegistryAuth).success(function(data) {
                         controlsService.showModal({
                             title: "Image Created",
-                            template: data
+                            template: data,
+                            size: "lg"
                         });
                         $scope.refresh();
                     });
