@@ -15,7 +15,11 @@
                             return config.title ? config.title : "Config";
                         },
                         content: function () {
-                            return angular.toJson(config.template, true);
+                            if ( ( typeof config.template ) == "string" ) {
+                                return config.template;
+                            } else {
+                                return JSON.stringify(config.template, null, "  ");
+                            }
                         }
                     }
                 };

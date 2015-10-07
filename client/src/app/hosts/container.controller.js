@@ -3,7 +3,7 @@
 
     angular.module('app.hosts').
 
-    controller('ContainerController', function($rootScope, $scope, $modal, $window, containersService) {
+    controller('ContainerController', function($rootScope, $scope, $modal, $window, containersService, controlsService) {
         function init() {
         }
 
@@ -38,47 +38,23 @@
         }
 
         $scope.showLogs = function() {
-
             containersService.getContainerLogs($scope.host, $scope.container).success(function(data) {
-
-                var modalInstance = $modal.open({
-                    templateUrl: '/app/controls/modal.json.html',
-                    controller: 'JsonController',
-                    size: "lg",
-                    resolve: {
-                        title: function() {
-                            return "Container Logs";
-                        },
-                        content: function () {
-                            return data;
-                        }
-                    }
+                controlsService.showModal({
+                    title: "Container Logs",
+                    template: data,
+                    size: "lg"
                 });
-
             });
-
         }
 
         $scope.showInfo = function() {
-
             containersService.getContainerInfo($scope.host, $scope.container).success(function(data) {
-
-                var modalInstance = $modal.open({
-                    templateUrl: '/app/controls/modal.json.html',
-                    controller: 'JsonController',
-                    size: "lg",
-                    resolve: {
-                        title: function() {
-                            return "Container Info";
-                        },
-                        content: function () {
-                            return angular.toJson(data, true);
-                        }
-                    }
+                controlsService.showModal({
+                    title: "Container Info",
+                    template: data,
+                    size: "lg"
                 });
-
             });
-
         };
 
         $scope.launchTool = function(toolName, port) {
