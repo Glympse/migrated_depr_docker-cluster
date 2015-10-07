@@ -5,7 +5,7 @@
         .module('app.hosts')
         .controller('HostController', HostController);
 
-    function HostController($scope, $modal, containersService) {
+    function HostController($scope, $modal, containersService, controlsService) {
         function init() {
             $scope.containers = [];
             $scope.refresh();
@@ -17,33 +17,24 @@
                 "X-Registry-Auth": ""
             };
 
-            var editor = $modal.open({
-                templateUrl: '/app/controls/modal.json.html',
-                controller: 'JsonController',
-                size: "lg",
-                resolve: {
-                    title: function() {
-                        return "Create an Image";
-                    },
-                    content: function () {
-                        return angular.toJson(template, true);
-                    }
+            controlsService.showModal({
+                title: "Create an Image",
+                template: template,
+                ok: function(params) {
+                    // Extract arguments
+                    var paramsBlob = angular.fromJson(params);
+                    var fromImage = paramsBlob["fromImage"];
+                    var xRegistryAuth = paramsBlob["X-Registry-Auth"];
+
+                    containersService.createImage($scope.host, fromImage, xRegistryAuth).success(function(data) {
+                        controlsService.showModal({
+                            title: "Image Created",
+                            template: data
+                        });
+                        $scope.refresh();
+                    });
                 }
             });
-
-            editor.result.then(function (params) {
-
-                // Extract arguments
-                var paramsBlob = angular.fromJson(params);
-                var fromImage = paramsBlob["fromImage"];
-                var xRegistryAuth = paramsBlob["X-Registry-Auth"];
-
-                containersService.createImage($scope.host, fromImage, xRegistryAuth).success(function(data) {
-                    $scope.refresh();
-                });
-
-            }, function () {});
-
         }
 
         $scope.createContainer = function() {

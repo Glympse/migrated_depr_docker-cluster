@@ -123,7 +123,12 @@
             var req = {
                 method: "POST",
                 url: url,
-                headers: {}
+                headers: {},
+                transformResponse: function(value) {
+                    var json = "[" + value.trim().replace(/\n/g, ",").replace(/}{/g, "},{") + "]";
+                    var result = JSON.parse(json);
+                    return result;
+                }
             };
             if ( xRegistryAuth ) {
                 req.headers["X-Registry-Auth"] = xRegistryAuth;
