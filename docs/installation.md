@@ -44,29 +44,31 @@ docker run -d \
 This installation method assumes that you already have a host with Docker API exposed:
 
 ```
-curl --data ' \
-{ \
-  "Image": "glympse/docker-cluster:latest", \
-  "Env": [ \
-    "AWS_REGION=us-east-1", \
-    "AWS_ACCESS_KEY_ID=...", \
-    "AWS_SECRET_ACCESS_KEY=...", \
-    "CLUSTER_TAG_NAME=...", \
-    "CLUSTER_TAG_VALUE=..." \
-  ], \
-  "HostConfig": { \
-    "PortBindings": { \
-      "8080/tcp": [ \
-        { \
-          "HostPort": "8080" \
-        } \
-      ] \
-    }, \
-    "RestartPolicy": { \
-      "Name": "always" \
-    } \
-  } \
-}' http://$DOCKER_HOST/containers/create?name=docker-cluster
+curl \
+  --header "Content-Type: application/json" \
+  --data '
+  {
+    "Image": "glympse/docker-cluster:latest",
+    "Env": [
+      "AWS_REGION=us-east-1",
+      "AWS_ACCESS_KEY_ID=...",
+      "AWS_SECRET_ACCESS_KEY=...",
+      "CLUSTER_TAG_NAME=...",   
+      "CLUSTER_TAG_VALUE=..."
+    ],
+    "HostConfig": {
+      "PortBindings": {
+        "8080/tcp": [
+          {
+            "HostPort": "8080"
+          }
+        ]
+      },
+      "RestartPolicy": {
+        "Name": "always"
+      }
+    }
+  }' http://$DOCKER_HOST:$DOCKER_PORT/containers/create?name=cluster-demo
 ```
 
 ## Worker Node Setup

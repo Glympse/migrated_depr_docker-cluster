@@ -1,49 +1,46 @@
 # Docker Cluster
-The loot is aimed to provide convenience way to micromanage cluster of Docker machines. 
-[Docker Remote API](https://docs.docker.com/reference/api/docker_remote_api_v1.18/) 
-is used as a control interface for manipulting cluster hosts. 
 
-Docker hosts can be created using 'worker' template from 
-[Glympse Cluster Managament](https://github.com/Glympse/CommonTools/tree/master/worker) package.
+Docker Cluster tool is aimed to provide convenient way of experimenting with a cluster of Docker machines.
+It uses [Docker Remote API](https://docs.docker.com/reference/api/docker_remote_api/)
+to perform routine Docker tasks on those instances.
+
+<div align="center">
+  <img width="60%" src="https://drive.google.com/uc?id=0B9NxURKU5b4SZEx6MzR6dm9SSUk&export=view">
+</div>
 
 ## Features
+
 - Ability to pull images from Docker Hub and private registries.
-- Authenticated access to Docker Registries is supported. 
-- Full spectrum of options for starting containers (port bindings, volume mappings, etc.).
-- Complete container lifecycle management. 
+- Authenticated access to Docker Registries is supported.
+- Access to all container properties exposed by Remote API (port bindings, volume mappings, environment variables, etc.).
+- Complete control over container lifecycle.
 
-## Screenshots
+## Documentation
 
-Hosts view:
+- [Installation](docs/installation.md)
+- [Tutorial](docs/tutorial.md)
 
-![](https://drive.google.com/uc?id=0B9NxURKU5b4SZEx6MzR6dm9SSUk&export=view)
+## Disclaimer
 
-Host actions:
+Docker Cluster interacts with Docker daemon via Remote API. Exposing Remote API on production machines is considered
+being security vulnerability. It is highly recommended to use Docker Cluster for educational and experimental purposes
+only.
 
-![](https://drive.google.com/uc?id=0B9NxURKU5b4SemJ4Ql9XN0NxUlU&export=view)
+From [Docker documentation](https://docs.docker.com/articles/basics/#bind-docker-to-another-hostport-or-a-unix-socket):
 
-Container actions:
+> Warning: Changing the default docker daemon binding to a TCP port or Unix docker user group will increase your
+> security risks by allowing non-root users to gain root access on the host. Make sure you control access to docker.
+> If you are binding to a TCP port, anyone with access to that port has full Docker access; so it is not advisable
+> on an open network.
 
-![](https://drive.google.com/uc?id=0B9NxURKU5b4SUWl5Y2h6VDd6OHM&export=view)
+## License
 
-Port helpers:
+Code is licensed under the [The MIT License](http://opensource.org/licenses/MIT). <br>
+Documentation is licensed under [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
 
-![](https://drive.google.com/uc?id=0B9NxURKU5b4SUW52TEdVOEZaamM&export=view)
+## Author
 
-Container logs:
+Docker Cluster is developed by Egor Pushkin. My recent efforts are targeted towards designing connected systems (mostly in mobile space) with focus on cross-platform development methodologies, modern communication paradigms and highly automated workflows.
 
-<div align="center">
-  <img width="70%" src="https://drive.google.com/uc?id=0B9NxURKU5b4SRWZXakg0TmJad0U&export=view">
-</div>
-
-Host info:
-
-<div align="center">
-  <img width="70%" src="https://drive.google.com/uc?id=0B9NxURKU5b4ScDRaQzQ3V0g0cXM&export=view">
-</div>
-
-Creating a container:
-
-<div align="center">
-  <img width="70%" src="https://drive.google.com/uc?id=0B9NxURKU5b4SV0dMeDdMaktpT1k&export=view">
-</div>
+LinkedIn - [https://www.linkedin.com/in/egorpushkin](https://www.linkedin.com/in/egorpushkin) <br>
+Twitter - [https://twitter.com/egorpushkin](https://twitter.com/egorpushkin)
