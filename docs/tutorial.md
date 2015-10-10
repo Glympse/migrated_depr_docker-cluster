@@ -2,9 +2,9 @@
 
 The tutorial walks you through the process of setting up Wordpress application using Docker Cluster.
 
-You can find video recording of the demo here:
+Corresponding video tutorial ia available here:
 
-[![Docker Cluster - Wordpress Demo](http://img.youtube.com/vi/VIDEO_ID/0.jpg)](http://www.youtube.com/watch?v=VIDEO_ID)
+[![Docker Cluster - Wordpress Demo](http://img.youtube.com/vi/28yTgcNzwjk/0.jpg)](http://www.youtube.com/watch?v=28yTgcNzwjk)
 
 Here is an accompanying step-by-step guide with required JSON snippets.
 
